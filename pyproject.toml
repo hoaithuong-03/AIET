@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "data-crawl"
+version = "1.0.0"
+description = "Crawling data for LLM"
+authors = ["thuongnh29"]
+readme = "README.md"
+
+packages = [
+    { include = "data_crawl", from = "src" }
+]
+
+
+[tool.poetry.scripts]
+crawler = "app.main:run"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.128.0"
+uvicorn = { extras = ["standard"], version = "^0.40.0" }
+pydantic = "^2.12.5"
+pydantic-settings = "^2.12.0"
+httpx = "^0.28.1"
+beautifulsoup4 = "^4.14.3"
+lxml = "^6.0.2"
+structlog = "^25.5.0"
+tenacity = "^9.1.2"
+fake-useragent = "^2.2.0"
+llama-index-core = "^0.14.13"
+llama-index-readers-file = "^0.5.6"
+llama-index-vector-stores-chroma = "^0.5.5"
+llama-index-embeddings-openai = "^0.5.1"
+python-dotenv = "^1.2.1"
+llama-index-embeddings-huggingface = "^0.6.1"
+sentence-transformers = "^5.2.2"
+llama-index-llms-huggingface = "^0.6.1"
+accelerate = "^1.12.0"
+aiofiles = "^25.1.0"
+llama-index-llms-gemini = "^0.6.2"
+google-generativeai = "^0.8.6"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+pytest-asyncio = "^1.3.0"
+pytest-cov = "^7.0.0"
+ruff = "^0.14.11"
+
+[tool.pytest.ini_options]
+testpaths = ["src/tests"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
